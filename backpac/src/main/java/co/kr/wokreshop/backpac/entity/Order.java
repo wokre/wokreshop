@@ -1,5 +1,6 @@
 package co.kr.wokreshop.backpac.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
 
@@ -12,7 +13,7 @@ import static javax.persistence.FetchType.LAZY;
  * Created By bohyun on 2021/11/13
  */
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Data
 @ToString(exclude = "member")
 public class Order {
@@ -23,6 +24,7 @@ public class Order {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id")
+    @JsonIgnore
     private Member member;
 
     private String orderNumber;
